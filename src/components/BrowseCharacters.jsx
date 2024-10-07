@@ -24,13 +24,14 @@ export default function BrowseCharacters() {
         
         const timeStamp = new Date().getTime();
         const hash = generateHash(timeStamp);
+        
 
-        const url = `https://gateway.marvel.com/v1/public/characters?ts=1&apikey=${publicKey}&hash=${hash}&nameStartsWith=${characterName}`;
+        const url = `https://gateway.marvel.com/v1/public/characters?&apikey=${publicKey}&ts=${timeStamp}&hash=${hash}&nameStartsWith=${characterName}`;
 
-        fetch(url).then((response) => response.json()).then(
-            (result) => {
+        fetch(url).then((response) => 
+            response.json()).then((result) => {                
                 setCahracterData(result.data);
-                console.log(result)
+                console.log("---", result)
             }
         )
 
